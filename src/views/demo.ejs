@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<main>
+    <h1><%= title %></h1>
+
+    <div class="demo-section">
+        <h2>Global Middleware Results:</h2>
+
+        <p><strong>Greeting:</strong> <%= greeting %></p>
+        <p><strong>Current Year:</strong> <%= currentYear %></p>
+        <p><strong>Theme:</strong> <%= bodyClass %></p>
+
+        <% if (Object.keys(queryParams).length > 0) { %>
+            <p><strong>Query Parameters:</strong></p>
+            <ul>
+                <% Object.keys(queryParams).forEach(key => { %>
+                    <li><%= key %>: <%= queryParams[key] %></li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p><em>No query parameters. Try adding ?debug=true</em></p>
+        <% } %>
+    </div>
+
+    <div class="demo-section">
+        <h2>Route-Specific Middleware Results:</h2>
+        <p>This page has special HTTP headers.</p>
+    </div>
+
+    <p><a href="/">&larr; Back to Home</a></p>
+</main>
+
+<%- include('partials/footer') %>
