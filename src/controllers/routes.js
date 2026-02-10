@@ -5,6 +5,10 @@ import { addDemoHeaders } from '../middleware/demo/headers.js';
 import { catalogPage, courseDetailPage } from './catalog/catalog.js';
 // Import basic page controllers
 import { homePage, aboutPage, demoPage, testErrorPage } from './index.js';
+// Import faculty controllers
+import { facultyListPage, facultyDetailPage } from './faculty/faculty.js';
+
+
 
 // Create a new router instance
 const router = Router();
@@ -16,6 +20,10 @@ router.get('/about', aboutPage);
 // Course catalog routes
 router.get('/catalog', catalogPage);
 router.get('/catalog/:courseId', courseDetailPage);
+
+// Faculty routes
+router.get('/faculty', facultyListPage);
+router.get('/faculty/:facultyId', facultyDetailPage);
 
 // Demo page with special middleware
 router.get('/demo', addDemoHeaders, demoPage);

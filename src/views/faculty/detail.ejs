@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/faculty.css">
+</head>
+<body class="<%= bodyClass %>">
+    <%- include('../partials/header') %>
+    
+    <main class="faculty-detail-container">
+        <div class="breadcrumb">
+            <a href="/faculty">← Back to Faculty Directory</a>
+        </div>
+
+        <div class="faculty-profile">
+            <h1><%= faculty.name %></h1>
+            <p class="title"><%= faculty.title %></p>
+            
+            <div class="faculty-info">
+                <div class="info-section">
+                    <h2>Contact Information</h2>
+                    <p><strong>Email:</strong> <a href="mailto:<%= faculty.email %>"><%= faculty.email %></a></p>
+                    <p><strong>Phone:</strong> <%= faculty.phone %></p>
+                    <p><strong>Office:</strong> <%= faculty.office %></p>
+                </div>
+
+                <div class="info-section">
+                    <h2>Department</h2>
+                    <p><%= faculty.department %></p>
+                </div>
+
+                <div class="info-section">
+                    <h2>Academic Title</h2>
+                    <p><%= faculty.title %></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="/faculty" class="button">View All Faculty</a>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>
