@@ -4,13 +4,13 @@ import { getFacultyById, getSortedFaculty } from '../../models/faculty/faculty.j
  * Route handler for the faculty list page
  * Displays all faculty members with optional sorting
  */
-const facultyListPage = (req, res) => {
+const facultyListPage = async (req, res) => {
     // Get sort parameter from query string, default to 'name'
     const sortBy = req.query.sort || 'name';
-    
+
     // Get sorted faculty array from model
-    const facultyList = getSortedFaculty(sortBy);
-    
+    const facultyList = await getSortedFaculty(sortBy);
+
     res.render('faculty/list', {
         title: 'Faculty Directory',
         faculty: facultyList,
@@ -22,9 +22,9 @@ const facultyListPage = (req, res) => {
  * Route handler for individual faculty detail page
  * Uses route parameter to display specific faculty member
  */
-const facultyDetailPage = (req, res, next) => {
+const facultyDetailPage = async (req, res, next) => {
     const facultyId = req.params.facultyId;
-    const facultyMember = getFacultyById(facultyId);
+    const facultyMember = await getFacultyById(facultyId);
     
     // If faculty member doesn't exist, create 404 error
     if (!facultyMember) {
